@@ -17,11 +17,11 @@ impl WebArchive {
 
 impl Module for WebArchive {
 	fn name(&self) -> String {
-		String::from("subdomains/webarchive")
+		String::from("modules.subdomains/webarchive")
 	}
 	
 	fn description(&self) -> String {
-		String::from("Use web.archive.org to find subdomains")
+		String::from("Use web.archive.org to find modules.subdomains")
 	}
 }
 
@@ -31,7 +31,8 @@ struct WebArchiveResponse(Vec<Vec<String>>);
 #[async_trait]
 impl SubdomainModule for WebArchive {
 	async fn enumerate(&self, domain: &str) -> Result<Vec<String>, Error> {
-		let url = format!("https://web.archive.org/cdx/search/cdx?matchType=domain&fl=original&output=json&collapse=urlkey&url={}", domain);
+		let url = format!("https://web.archive.org/cdx/search/cdx?matchType=domain&fl=original&output=json&collapse\
+		=urlkey&url={}", domain);    	// wayback machine api
 		let res = reqwest::get(&url).await?;
 		
 		if !res.status().is_success() {

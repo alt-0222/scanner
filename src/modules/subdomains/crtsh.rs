@@ -16,11 +16,11 @@ impl Crtsh {
 
 impl Module for Crtsh {
 	fn name(&self) -> String {
-		String::from("subdomains/crtsh")
+		String::from("modules.subdomains/crtsh")
 	}
 	
 	fn description(&self) -> String {
-		String::from("Use crt.sh/ to find subdomains")
+		String::from("Use crt.sh/ to find modules.subdomains")
 	}
 }
 
@@ -44,7 +44,7 @@ impl SubdomainModule for Crtsh {
 			Err(_) => return Err(Error::InvalidHttpResponse(self.name())),
 		};
 		
-		// clean and dedup results
+		// clean and dedup subdomain results
 		let subdomains: HashSet<String> = crtsh_entries
 			.into_iter()
 			.map(|entry| {
