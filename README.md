@@ -1,5 +1,5 @@
 #  Scanner 
-*Inspects and maps multiple attack surfaces of a website of CVEs and CWEs*
+*Inspects and maps multiple attack surfaces of a website using CVEs and CWEs*
 ***
 
 ## Usage
